@@ -1,0 +1,19 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col" *ngFor="let day of weekDays">
+      <h3>{{ day }}</h3>
+      <div *ngFor="let scheduleItem of schedules[day]">
+        <div class="card schedule-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ scheduleItem.subjectName }} ({{ scheduleItem.teacherName }})</h5>
+            <p class="card-text">{{ scheduleItem.startTime | date: 'shortTime' }} - {{ scheduleItem.endTime | date: 'shortTime' }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Показывать, если нет занятий в этот день -->
+      <div *ngIf="schedules[day].length === 0" class="empty-slot">
+        Нет занятий
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<mat-tab-group>
+  <mat-tab label="Добавить студента">
+    <div>
+      <form (ngSubmit)="addStudent()">
+        <mat-form-field appearance="fill">
+          <mat-label>Имя</mat-label>
+          <input matInput placeholder="Имя" [(ngModel)]="student.name" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Фамилия</mat-label>
+          <input matInput placeholder="Фамилия" [(ngModel)]="student.surname" name="surname" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Отделение</mat-label>
+          <mat-select [(ngModel)]="student.department_id" name="departmentId" required>
+            <mat-option *ngFor="let department of departments" [value]="department.id">
+              {{ department.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Добавить</button>
+      </form>
+    </div>
+  </mat-tab>
+  <!-- Здесь могут быть другие вкладки для разных сущностей -->
+</mat-tab-group>
